@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d3rnklqt0uml2"]
+
+[ext_resource type="Script" uid="uid://cl4rp0ol01bkp" path="res://addons/AlternatePixels/Templates/RootHandler.gd" id="1_ufi6m"]
+[ext_resource type="Shader" uid="uid://bvqf4khofwjwm" path="res://addons/AlternatePixels/Shaders/Trixel.gdshader" id="3_lh5m2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qh4fv"]
+viewport_path = NodePath("Screen")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uri1e"]
+resource_local_to_scene = true
+shader = ExtResource("3_lh5m2")
+shader_parameter/src_tex = SubResource("ViewportTexture_qh4fv")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8tn2x"]
+viewport_path = NodePath("Screen")
+
+[node name="TrixelRoot" type="Node" unique_id=2057650861]
+script = ExtResource("1_ufi6m")
+
+[node name="Screen" type="SubViewport" parent="." unique_id=726915662]
+canvas_item_default_texture_filter = 3
+audio_listener_enable_2d = true
+size = Vector2i(160, 90)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="." unique_id=747674598]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Shader" type="TextureRect" parent="Control" unique_id=541788823]
+z_as_relative = false
+material = SubResource("ShaderMaterial_uri1e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("ViewportTexture_8tn2x")
+metadata/_edit_use_anchors_ = true
